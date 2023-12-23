@@ -26,7 +26,7 @@ int main(int argc, char **argv) {
   return 0;
 }
 
-void print_file(FILE *f) {
+void print_file(FILE *f) { // Печать файла
   if (f != NULL) {
     int c = fgetc(f);
     while (c != EOF) {
@@ -37,7 +37,7 @@ void print_file(FILE *f) {
 }
 
 int flag_checker(int argc, char **argv, int *b, int *e, int *n, int *s, int *t,
-                 int *v) {
+                 int *v) { // Проверка флагов
   char ch = 0;
 
   struct option flags[] = {{"number-nonblank", no_argument, 0, 'b'},
@@ -90,7 +90,7 @@ int flag_checker(int argc, char **argv, int *b, int *e, int *n, int *s, int *t,
 }
 
 void s21_cat(int file_num, int argc, char **argv, int b, int e, int n, int s,
-             int t, int v) {
+             int t, int v) { // Функция, открывающая файле и вызывающая функцию печати символа с учетом флагов
   if (file_num == -1) {
     exit(1);
   }
@@ -112,7 +112,7 @@ void s21_cat(int file_num, int argc, char **argv, int b, int e, int n, int s,
 }
 
 void print_symbol(int c, int *pr, int b, int e, int n, int s, int t, int v,
-                  int *line, int *is_empty) {
+                  int *line, int *is_empty) { // Функция печати символа, с учетом флагов
   if (!(s && *pr == '\n' && c == '\n' && *is_empty)) {
     if (*pr == '\n' && c == '\n')
       *is_empty = 1;

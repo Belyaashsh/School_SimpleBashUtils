@@ -45,7 +45,7 @@ int main(int argc, char **argv) {
 }
 
 void flag_checker(int argc, char **argv, flags *f, int *regex_flags,
-                  char *patt) {
+                  char *patt) { // Проверка флагов
   char ch = 0;
   int e_count = 0;
 
@@ -110,7 +110,7 @@ void flag_checker(int argc, char **argv, flags *f, int *regex_flags,
   }
 }
 void e_pattern(char *optarg, int *e_count, char *patt, flags *f) {
-  if (*e_count) {
+  if (*e_count) { // Функция для обработки флана -е
     char *ch = "|";
     strcat(patt, ch);
   }
@@ -123,7 +123,7 @@ void e_pattern(char *optarg, int *e_count, char *patt, flags *f) {
 }
 
 void f_pattern(char *optarg, int *e_count, char *patt, flags *f) {
-  FILE *fp = fopen(optarg, "r");
+  FILE *fp = fopen(optarg, "r"); // Функция для обработки флага -f
   if (fp == NULL && !f->s) {
     printf("PATTERN_FILE NOT FOUND\n");
     exit(1);
@@ -141,7 +141,7 @@ void f_pattern(char *optarg, int *e_count, char *patt, flags *f) {
   fclose(fp);
 }
 
-void s21_grep(char **argv, flags f, int *index, regex_t *preg, int f_count) {
+void s21_grep(char **argv, flags f, int *index, regex_t *preg, int f_count) { // Функция, открывающая файл и вызывающая функцию печати.
   int j = 0;
   for (int i = 0; i < f_count; i++) {
     j = index[i];
@@ -160,7 +160,7 @@ void s21_grep(char **argv, flags f, int *index, regex_t *preg, int f_count) {
   }
 }
 
-void grepchik(FILE *file, flags f, regex_t *preg, int f_count, char *filename) {
+void grepchik(FILE *file, flags f, regex_t *preg, int f_count, char *filename) { // Функция печати
   char *line = NULL;
   size_t length = 0;
   int counter = 0;
@@ -242,7 +242,7 @@ void grepchik(FILE *file, flags f, regex_t *preg, int f_count, char *filename) {
   free(line);
 }
 
-int file_check(int argc, char **argv, flags f, int *index) {
+int file_check(int argc, char **argv, flags f, int *index) { // Функция для поиска имен файолов среди аргументов
   int counter = 0;
   int j = 0;
   for (int i = 1; i < argc; i++) {
@@ -268,7 +268,7 @@ int file_check(int argc, char **argv, flags f, int *index) {
 }
 
 void patt_check(int argc, char **argv, flags f, char *patt, int *index,
-                regex_t *preg) {
+                regex_t *preg) { // Функция поиска паттерна для grep и компиляции регулярного выражения
   char **pen = &argv[1];
 
   if (f.is_option && (!f.e && !f.f)) {

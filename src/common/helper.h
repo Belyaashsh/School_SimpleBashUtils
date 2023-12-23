@@ -3,7 +3,7 @@
 #define SRC_COMMON_HELPER_H_
 
 
-typedef struct flags
+typedef struct flags // Структура фалгов
 {
   int e;
   int i;
@@ -22,7 +22,7 @@ typedef struct flags
 }flags;
 
 
-void flags_init(flags *f){
+void flags_init(flags *f){ // Инициализация всех флагов
   f->e = 0;
   f->l = 0;
   f->i = 0;
